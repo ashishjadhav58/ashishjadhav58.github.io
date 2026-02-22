@@ -3,36 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashish Jadhav | Home</title>
+  <title>Ashish Jadhav | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo"><h3>My Portfolio</h3></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Hello, I'm <span class="highlight">Ashish Jadhav</span></h1>
-      <h2>Graphic Designer</h2>
-      <div class="social-links">
-        <a href="#" aria-label="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/></a>
-        <a href="#" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"/></a>
-        <a href="#" aria-label="Twitter"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" alt="Twitter"/></a>
+  <!-- Mode Toggle -->
+  <div class="mode-toggle">
+    <button id="toggle-mode" class="toggle-btn">
+      <span class="mode-label">Switch to IDE Mode</span>
+    </button>
+  </div>
+
+  <!-- CLI Mode -->
+  <div id="cli-mode" class="mode-container active">
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="terminal-title">ashish@portfolio:~$</span>
+        <div class="terminal-controls">
+          <span class="control minimize"></span>
+          <span class="control maximize"></span>
+          <span class="control close"></span>
+        </div>
       </div>
-      <a href="projects.html" class="btn">View My Work</a>
+      <div class="terminal-body">
+        <div id="terminal-output"></div>
+        <div class="terminal-input-line">
+          <span class="prompt">ashish@portfolio:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false">
+        </div>
+      </div>
     </div>
-  </section>
-  <footer>
-    <p>&copy; 2025 Ashish Jadhav. All rights reserved.</p>
-  </footer>
+  </div>
+
+  <!-- IDE Mode -->
+  <div id="ide-mode" class="mode-container">
+    <div class="ide-container">
+      <!-- IDE Header -->
+      <div class="ide-header">
+        <div class="ide-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Ashish's AI Agent IDE</span>
+        </div>
+        <div class="ide-controls">
+          <button class="ide-control-btn">⚙️</button>
+        </div>
+      </div>
+
+      <!-- IDE Main Content -->
+      <div class="ide-main">
+        <!-- Left Sidebar - Chat -->
+        <div class="ide-sidebar-left">
+          <div class="chat-container">
+            <div class="chat-header">
+              <h3>💬 AI Assistant</h3>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+              <div class="chat-message assistant">
+                <div class="message-content">
+                  Hi! I'm Ashish's AI assistant. Ask me anything about his projects, skills, or experience!
+                </div>
+              </div>
+            </div>
+            <div class="chat-input-container">
+              <input type="text" id="chat-input" class="chat-input" placeholder="Ask about projects, skills..." autocomplete="off">
+              <button id="chat-send" class="chat-send-btn">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center - Solution Explorer -->
+        <div class="ide-center">
+          <div class="explorer-header">
+            <h3>📁 Solution Explorer</h3>
+          </div>
+          <div class="explorer-content" id="explorer-content">
+            <!-- Projects will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Right Sidebar - Details Panel -->
+        <div class="ide-sidebar-right">
+          <div class="details-panel">
+            <div class="details-header">
+              <h3>📋 Details</h3>
+            </div>
+            <div class="details-content" id="details-content">
+              <p class="details-placeholder">Select a project to view details</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
-</html> 
+</html>
