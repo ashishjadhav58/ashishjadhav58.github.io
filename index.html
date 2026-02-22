@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ashish Jadhav | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
   <!-- Mode Toggle -->
@@ -12,6 +12,42 @@
     <button id="toggle-mode" class="toggle-btn">
       <span class="mode-label">Switch to IDE Mode</span>
     </button>
+  </div>
+
+  <!-- PDF Viewer Modal -->
+  <div id="pdf-viewer-modal" class="pdf-modal">
+    <div class="pdf-container">
+      <div class="pdf-header">
+        <div class="pdf-tabs">
+          <div class="pdf-tab active">
+            <span class="tab-icon">📄</span>
+            <span class="tab-name">ashish_jadhav_resume.pdf</span>
+            <button class="tab-close" id="close-pdf">×</button>
+          </div>
+        </div>
+      </div>
+      <div class="pdf-toolbar">
+        <div class="toolbar-left">
+          <button class="tool-btn" id="zoom-out" title="Zoom Out">−</button>
+          <span class="zoom-level" id="zoom-level">100%</span>
+          <button class="tool-btn" id="zoom-in" title="Zoom In">+</button>
+        </div>
+        <div class="toolbar-center">
+          <button class="tool-btn" id="rotate-left" title="Rotate Left">↺</button>
+          <button class="tool-btn" id="rotate-right" title="Rotate Right">↻</button>
+        </div>
+        <div class="toolbar-right">
+          <a href="ashishjadhav (3).pdf" download="Ashish_Jadhav_Resume.pdf" class="tool-btn download-btn" title="Download">
+            ⬇ Download
+          </a>
+        </div>
+      </div>
+      <div class="pdf-viewer-content">
+        <div class="pdf-canvas-wrapper" id="pdf-canvas-wrapper">
+          <embed id="pdf-embed" src="ashishjadhav (3).pdf" type="application/pdf" />
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- CLI Mode -->
@@ -51,44 +87,69 @@
 
       <!-- IDE Main Content -->
       <div class="ide-main">
-        <!-- Left Sidebar - Chat -->
+        <!-- Left Sidebar - Solution Explorer -->
         <div class="ide-sidebar-left">
-          <div class="chat-container">
-            <div class="chat-header">
-              <h3>💬 AI Assistant</h3>
+          <div class="explorer-container">
+            <div class="explorer-header">
+              <h3>📁 EXPLORER</h3>
+            </div>
+            <div class="explorer-content" id="explorer-content">
+              <!-- Files will be loaded here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Center - Code Editor -->
+        <div class="ide-center">
+          <div class="editor-tabs">
+            <div class="editor-tab active">
+              <span class="tab-icon">📄</span>
+              <span class="tab-name" id="active-file-name">about.js</span>
+            </div>
+          </div>
+          <div class="editor-container">
+            <div class="line-numbers" id="line-numbers"></div>
+            <div class="code-content" id="code-content">
+              <!-- Code will be displayed here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Sidebar - AI Agent -->
+        <div class="ide-sidebar-right">
+          <div class="agent-container" id="agent-container">
+            <div class="drop-zone-overlay" id="drop-zone">
+              <div class="drop-zone-text">📄 Drop file here for summary</div>
+            </div>
+            <div class="agent-header">
+              <h3>🤖 AI Agent</h3>
+              <div class="agent-controls">
+                <select id="ai-model-selector" class="model-selector">
+                  <option value="claude">Claude Sonnet</option>
+                  <option value="chatgpt">ChatGPT</option>
+                  <option value="gemini">Gemini</option>
+                </select>
+                <div class="agent-status">
+                  <span class="status-dot"></span>
+                  <span class="status-text">Online</span>
+                </div>
+              </div>
             </div>
             <div class="chat-messages" id="chat-messages">
               <div class="chat-message assistant">
-                <div class="message-content">
-                  Hi! I'm Ashish's AI assistant. Ask me anything about his projects, skills, or experience!
+                <div class="message-avatar">🤖</div>
+                <div class="message-bubble">
+                  <div class="message-content">
+                    Hi! I'm Ashish's AI assistant. I can help you explore his projects, skills, and experience. Try asking me something!
+                  </div>
                 </div>
               </div>
             </div>
             <div class="chat-input-container">
-              <input type="text" id="chat-input" class="chat-input" placeholder="Ask about projects, skills..." autocomplete="off">
-              <button id="chat-send" class="chat-send-btn">Send</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Center - Solution Explorer -->
-        <div class="ide-center">
-          <div class="explorer-header">
-            <h3>📁 Solution Explorer</h3>
-          </div>
-          <div class="explorer-content" id="explorer-content">
-            <!-- Projects will be loaded here -->
-          </div>
-        </div>
-
-        <!-- Right Sidebar - Details Panel -->
-        <div class="ide-sidebar-right">
-          <div class="details-panel">
-            <div class="details-header">
-              <h3>📋 Details</h3>
-            </div>
-            <div class="details-content" id="details-content">
-              <p class="details-placeholder">Select a project to view details</p>
+              <input type="text" id="chat-input" class="chat-input" placeholder="Ask me anything..." autocomplete="off">
+              <button id="chat-send" class="chat-send-btn">
+                <span>➤</span>
+              </button>
             </div>
           </div>
         </div>
@@ -96,6 +157,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3.0"></script>
 </body>
 </html>
